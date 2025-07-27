@@ -1,4 +1,26 @@
 body {
     background-color: black;
     color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+tr {
+    border-bottom: 2px solid white;
+}
+
+th {
+    min-width: 120px;
+    text-align: left;
 }

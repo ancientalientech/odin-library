@@ -27,7 +27,15 @@ addBookToLibrary("Potato", "The Man", 380, true);
 
 const container = document.querySelector(".table");
 
+const clearTable = () => {
+    table = document.querySelector("tbody");
+    if (table !== null) {
+        container.removeChild(table);
+    }
+}
+
 const showLibrary = () => {
+    clearTable();
     const tempBody = document.createElement("tbody");
     myLibrary.forEach(book => {
         const tempRow = document.createElement("tr");
@@ -56,3 +64,35 @@ const showLibrary = () => {
 
 showLibrary();
 
+const dialog = document.querySelector("dialog");
+const newBtn = document.querySelector("dialog + button");
+const titleTxt = document.querySelector("#title");
+const authorTxt = document.querySelector("#author");
+const pagesTxt = document.querySelector("#pages");
+const readChck = document.querySelector("#read");
+const cancelBtn = document.querySelector("#cancelBtn");
+const confirmBtn = document.querySelector("#confirmBtn");
+
+newBtn.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+cancelBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    dialog.close();
+});
+
+const clearForm = () => {
+    titleTxt.value = "";
+    authorTxt.value = "";
+    pagesTxt.value = "";
+    readChck.checked = false;
+}
+
+confirmBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    addBookToLibrary(titleTxt.value, authorTxt.value, pagesTxt.value, read.checked);
+    showLibrary();
+    clearForm();
+    dialog.close();
+})

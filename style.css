@@ -24,3 +24,8 @@ th {
     min-width: 120px;
     text-align: left;
 }
+
+#add {
+    display: block;
+    margin: 1rem auto;
+}

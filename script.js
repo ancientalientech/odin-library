@@ -34,6 +34,11 @@ const clearTable = () => {
     }
 }
 
+const deleteBook = id => {
+    const index = myLibrary.findIndex(book => book.id === id);
+    myLibrary.splice(index, 1);
+}
+
 const showLibrary = () => {
     clearTable();
     const tempBody = document.createElement("tbody");
@@ -52,10 +57,30 @@ const showLibrary = () => {
         const readElement = document.createElement("td");
         readElement.textContent = book.read ? "Read" : "Not read yet";
 
+        const buttonElement = document.createElement("td");
+        const deleteBtn = document.createElement("button");
+        deleteBtn.setAttribute("data-id", book.id);
+        tempRow.setAttribute("data-id", book.id);
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.addEventListener("click", (e) => {
+            const books = document.querySelectorAll("tr");
+            let bookRow;
+            books.forEach(bk => {
+                if(bk.dataset.id === e.target.dataset.id) {
+                    bookRow = bk;
+                }
+            });
+            deleteBook(e.target.dataset.id);
+            showLibrary();
+        });
+        buttonElement.appendChild(deleteBtn);
+
         tempRow.appendChild(titleElement);
         tempRow.appendChild(authorElement);
         tempRow.appendChild(pagesElement);
         tempRow.appendChild(readElement);
+        tempRow.appendChild(buttonElement);
 
         tempBody.appendChild(tempRow);
     });

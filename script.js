@@ -21,10 +21,6 @@ const addBookToLibrary = (title, author, pages, read) => {
     myLibrary.push(book);
 }
 
-addBookToLibrary("Fish", "The Dude", 256, true);
-addBookToLibrary("Meat", "The Guy", 128, false);
-addBookToLibrary("Potato", "The Man", 380, true);
-
 const container = document.querySelector(".table");
 
 const clearTable = () => {

@@ -29,3 +29,55 @@ th {
     display: block;
     margin: 1rem auto;
 }
+
+#add, #confirmBtn, #cancelBtn {
+    width: 100px;
+    height: 30px;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+#confirmBtn, #cancelBtn {
+    margin: 0 0.8rem;
+}
+
+dialog {
+    background-color: black;
+    color: white;
+    width: 400px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.input {
+    display: flex;
+}
+
+label {
+    min-width: 150px;
+}
+
+.delete-btn, .toggle-read-btn {
+    
+    border: 1px solid white;
+    border-radius: 3px;
+    margin: 0 3px;
+}
+
+.toggle-read-btn {
+    width: 100px;
+}
+
+button {
+    background-color: rgba(34, 34, 34, 0.87);
+    color: rgb(18, 228, 106);
+}

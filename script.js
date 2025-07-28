@@ -76,6 +76,22 @@ const showLibrary = () => {
         });
         buttonElement.appendChild(deleteBtn);
 
+        const toggleReadBtn = document.createElement("button");
+        toggleReadBtn.setAttribute("data-id", book.id);
+        toggleReadBtn.classList.add("toggle-read-btn");
+        toggleReadBtn.addEventListener("click", (e) => {
+            const bookIndex = myLibrary.findIndex(book => book.id === e.target.dataset.id);
+            if (myLibrary[bookIndex].read === false) {
+                myLibrary[bookIndex].read = true;
+            } else {
+                myLibrary[bookIndex].read = false;
+            }
+            showLibrary();
+        });
+        toggleReadBtn.textContent = book.read ? "Not Read" : "Read";
+        buttonElement.appendChild(toggleReadBtn);
+
+
         tempRow.appendChild(titleElement);
         tempRow.appendChild(authorElement);
         tempRow.appendChild(pagesElement);
@@ -102,17 +118,18 @@ newBtn.addEventListener("click", () => {
     dialog.showModal();
 });
 
-cancelBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    dialog.close();
-});
-
 const clearForm = () => {
     titleTxt.value = "";
     authorTxt.value = "";
     pagesTxt.value = "";
     readChck.checked = false;
 }
+
+cancelBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    clearForm();
+    dialog.close();
+});
 
 confirmBtn.addEventListener("click", (e) => {
     e.preventDefault();

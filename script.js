@@ -16,6 +16,14 @@ function Book(title, author, pages, read) {
     }
 }
 
+Book.prototype.toggleRead = function() {
+    if (this.read === true) {
+        this.read = false;
+    } else {
+        this.read = true;
+    }
+};
+
 const addBookToLibrary = (title, author, pages, read) => {
     const book = new Book(title, author, pages, read);
     myLibrary.push(book);
@@ -77,11 +85,7 @@ const showLibrary = () => {
         toggleReadBtn.classList.add("toggle-read-btn");
         toggleReadBtn.addEventListener("click", (e) => {
             const bookIndex = myLibrary.findIndex(book => book.id === e.target.dataset.id);
-            if (myLibrary[bookIndex].read === false) {
-                myLibrary[bookIndex].read = true;
-            } else {
-                myLibrary[bookIndex].read = false;
-            }
+            myLibrary[bookIndex].toggleRead();
             showLibrary();
         });
         toggleReadBtn.textContent = book.read ? "Not Read" : "Read";
